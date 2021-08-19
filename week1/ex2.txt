@@ -1,0 +1,249 @@
+    1  ls
+    2  nmap
+    3  wireshark
+    4  ls
+    5  sudo apt install ./jetbrains-toolbox
+    6  ls
+    7  la
+    8  ls -a
+    9  ls --help
+   10  ls -f
+   11  ls
+   12  ./jetbrains-toolbox
+   13  cd toolbox
+   14  sudo ./jetbrains-toolbox
+   15  sudo apt uninstall toolbox
+   16  sudo apt remove toolbox
+   17  toolbox/jetbrains-toolbox
+   18  ls /usr/bin
+   19  sudo apt update
+   20  sudo apt upgrade
+   21  ls
+   22  cd Downloads
+   23  ls
+   24  sudo apt install ./Yandex.deb
+   25  ls
+   26  nano .profile
+   27  ./gradlew --stop
+   28  java
+   29  source $HOME/.profile
+   30  java
+   31  ./gradle
+   32  ./gradlew --stop
+   33  cd ../ && ./gradlew --stop
+   34  ./gradlew clean
+   35  ./gradlew build
+   36  java -version
+   37  ./gradlew build
+   38  ./gradlew run
+   39  ./gradlew jextract
+   40  ./gradlew run
+   41  source $HOME/.profile
+   42  ./gradlew run
+   43  ./gradlew jextract
+   44  ./gradlew run
+   45  ./gradlew -Djava.library.path=/usr/lib/gcc/x86_64-linux-gnu/10/ run
+   46  ./gradlew --stop
+   47  ./gradlew run
+   48  ./gradlew jextract
+   49  sudo apt install ./discord-0.0.15.deb
+   50  sudo apt-get -f install~
+   51  sudo apt-get -f install
+   52  sudo apt install ./discord-0.0.15.deb
+   53  sudo apt -f install ./discord-0.0.15.deb
+   54  curl -p --insecure "http://ftp.br.debian.org/debian/pool/main/liba/libappindicator/libappindicator1_0.4.92-8_amd64.deb" --output libappindicator1_0.4.92-8_amd64.deb\ncurl -p --insecure "http://ftp.br.debian.org/debian/pool/main/libi/libindicator/libindicator7_0.5.0-4_amd64.deb" --output libindicator7_0.5.0-4_amd64.deb\n\nsudo dpkg --install libindicator7_0.5.0-4_amd64.deb\nsudo apt-get install libdbusmenu-gtk4\nsudo dpkg --install libappindicator1_0.4.92-8_amd64.deb
+   55  ls
+   56  sudo dpkg --install libindicator7_0.5.0-4_amd64.deb
+   57  sudo apt install libdbusmenu-gtk4
+   58  ls
+   59  sudo apt install ./discord-0.0.15.deb
+   60  ls
+   61  curl -p --insecure "http://ftp.br.debian.org/debian/pool/main/liba/libappindicator/libappindicator1_0.4.92-8_amd64.deb" --output libappindicator1_0.4.92-8_amd64.deb\n
+   62  ls
+   63  sudo dpkg --install libappindicator1_0.4.92-8_amd64.deb
+   64  sudo apt install ./discord-0.0.15.deb
+   65  ls /
+   66  ls /usr/include
+   67  ls
+   68  sudo apt install build-essentials
+   69  sudo apt install build-essential
+   70  ls /usr/include
+   71  ls /usr/lib
+   72  ls /usr/lib/gcc
+   73  ls /usr/lib/gcc/x86_64-linux-gnu
+   74  ls /usr/lib/gcc/x86_64-linux-gnu/10
+   75  rm -rf $HOME/.gradle/caches/
+   76  cd ../
+   77  source .profile
+   78  ls
+   79  cat .profile
+   80  cp /usr/lib/gcc/x86_64-linux-gnu/10/* /usr/lib/
+   81  sudo cp /usr/lib/gcc/x86_64-linux-gnu/10/* /usr/lib/
+   82  sudo apt install lua5.3
+   83  ls /usr/lib
+   84  ls /usr/local/include
+   85  ls /usr/local
+   86  ls /usr/local/bin
+   87  sudo apt install liblua5.3-dev
+   88  ls /usr/local/lib/
+   89  ls /usr/
+   90  ls /usr/lib64
+   91  ls /usr/lib32
+   92  ls /usr/lib
+   93  sudo apt install lua5.3-dev
+   94  sudo apt install liblua5.3-dev
+   95  ls /lib
+   96  ls /lib/whereis lua
+   97  whereis lua
+   98  ls /usr/lib/x86_64-linux-gnu/lua/5.4/
+   99  ls /usr/lib/x86_64-linux-gnu/lua/5.4/mime
+  100  ls /usr/lib/x86_64-linux-gnu/lua/5.4/socket
+  101  ls /usr/lib/x86_64-linux-gnu/lua/5.3/
+  102  ls /usr/lib/x86_64-linux-gnu/lua/5.3/mime
+  103  ls /usr/lib/x86_64-linux-gnu/lua/5.3/socket
+  104  ls /usr/lib/x86_64-linux-gnu/lua
+  105  ls /usr/lib/x86_64-linux-gnu/lua/5.1/
+  106  whereis lua
+  107  ls /usr/bin/lua
+  108  sudo apt install liblua5.3
+  109  sudo apt find liblua5.3
+  110  sudo apt search liblua5.3
+  111  sudo apt install liblua5.3-0
+  112  whereis liblua
+  113  whereis liblua.so
+  114  cp /usr/lib/x86_64-linux-gnu/liblua5.3* /usr/lib
+  115  sudo cp /usr/lib/x86_64-linux-gnu/liblua5.3* /usr/lib
+  116  cat /usr/include/lua5.3/lua.h
+  117  cat /usr/include/lua5.3/lualib.h
+  118  cat /usr/include/lua5.3/luaxlib.h
+  119  cat /usr/include/lua5.3/lauxlib.h
+  120  source /home/plony/.profile
+  121  ./gradlew jextract
+  122  ettercap
+  123  sudo apt install ettercap-graphical
+  124  ifconfig
+  125  echo "1" > /proc/sys/net/ipv4/ip_forward
+  126  sudo echo "1" > /proc/sys/net/ipv4/ip_forward
+  127  sudo nano /proc/sys/net/ipv4/ip_forward
+  128  cat /proc/sys/net/ipv4/ip_forward
+  129  sslstrip
+  130  git clone https://github.com/singe/sslstrip2/
+  131  cd sslstrip2
+  132  sudo python setup.py install
+  133  sudo py setup.py install
+  134  sudo python2 setup.py install
+  135  sudo python3 setup.py install
+  136  sudo py2 setup.py install
+  137  py2
+  138  python2
+  139  sudo python2 setup.py install
+  140  sslstrip
+  141  sudo apt install python-pip
+  142  sudo apt install python2-pip
+  143  sudo apt install python3-pip
+  144  pip2
+  145  pip
+  146  pip -V
+  147  python2 --help
+  148  python2 -m pip
+  149  curl -O https://bootstrap.pypa.io/get-pip.py
+  150  sudo python3.2 get-pip.py
+  151  sudo python3 get-pip.py
+  152  pip2
+  153  pip-2
+  154  pip
+  155  pip -V
+  156  sudo apt install python2-pip
+  157  sudo apt install python2.7-pip
+  158  sudo apt search python
+  159  sudo apt install python2
+  160  pip
+  161  pip -V
+  162  pip2
+  163  sudo apt install python2.7
+  164  sudo apt-get install python3-pip
+  165  pip -V
+  166  sudo apt-get update
+  167  ls
+  168  pip
+  169  pip -V
+  170  python get-pip.py
+  171  python3 get-pip.py
+  172  python2 get-pip.py
+  173  rm get-pip.py
+  174  wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+  175  python2 get-pip.py
+  176  pip -V
+  177  pip2
+  178  sudo apt install python-pip
+  179  sudo apt install python2-pip
+  180  sudo apt install python2.7-pip
+  181  sudo apt install python-pip
+  182  ls
+  183  python3 setup.py install
+  184  cd ../
+  185  ls
+  186  rm -rf sslstrip2
+  187  sudo rm -rf sslstrip2
+  188  sudo apt remove sslstrip
+  189  git clone https://github.com/moxie0/sslstrip
+  190  cd sslstrip
+  191  sudo python3 setup.py install
+  192  sudo python2 setup.py install
+  193  sslstrip
+  194  cd /etc/apt
+  195  sudo nano sources.list
+  196  sudo apt upgrade\nsudo apt install python-pip
+  197  sudo apt install python-pip
+  198  sudo apt update
+  199  sudo apt upgrade
+  200  sudo apt install python-pip
+  201  sudo nano sources.list
+  202  sudo apt update
+  203  sudo apt upgrade
+  204  sudo apt install python-pip
+  205  pip --vesrion
+  206  pip --version
+  207  cd ~
+  208  python get-pip.py
+  209  python2 get-pip.py
+  210  python3 ./get-pip.py
+  211  ls
+  212  cd sslstrip
+  213  python2 get-pip.py
+  214  ls
+  215  cd ../
+  216  ls
+  217  curl https://bootstrap.pypa.io/2.7/get-pip.py -o get-pip.py
+  218  python2 get-pip.py
+  219  curl https://bootstrap.pypa.io/2.7/get-pip.py
+  220  python3 -m pip install -r 
+  221  python3 -m pip install -r sudo apt-get install software-properties-common\nsudo apt-add-repository universe\nsudo apt-get update\nsudo apt-get install python-pip
+  222  sudo apt-get install software-properties-common
+  223  sudo apt-add-repository universe
+  224  sudo apt-get update
+  225  sudo apt-get install software-properties-common\nsudo apt-add-repository universe\nsudo apt-get update\nsudo apt-get install python-pip
+  226  python2 -m pip
+  227  python2 -m pip Twisted pyopenssl
+  228  python2 -m pip install Twisted pyopenssl
+  229  sslstrip
+  230  iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+  231  iptables -h
+  232  iptables -t nat --help
+  233  iptables -t nat -A PREROUTING -p tcp --help
+  234  iptables -t nat -A PREROUTING -p tcp --source 80 -j REDIRECT --destination 8080
+  235  sudo iptables -t nat -A PREROUTING -p tcp --source 80 -j REDIRECT --destination 8080
+  236  sslstrip 8080
+  237  sslstrip -l 8080
+  238  ls
+  239  mkdir OS2021
+  240  cd OS2021
+  241  ls
+  242  git init
+  243  git remote add origin git@github.com:arslanarm/OS2021.git
+  244  ls
+  245  mkdir week1
+  246  cd week1
+  247  ;s
+  248  ls
+  249  ls /usr/bin | sort -r > "ex1.txt"
