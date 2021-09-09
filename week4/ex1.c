@@ -6,8 +6,8 @@ int main(int argc, char** argv) {
 	int n = atoi(argv[1]);
 	int pid = fork();
 	if (pid == 0) {
-		printf("Hello from child %d\n", pid - n);
+		printf("Hello from child [%d - %d]\n", pid, n);
 	} else {
-		printf("Hello from parent %d\n", pid - n);
+		printf("Hello from parent [%d - %d]\n", pid, n);
 	}
 }
