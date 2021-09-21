@@ -20,8 +20,10 @@ void consumer(buffer_t *buf) {
     while (1) {
         if (buf->length == 0) pthread_cond_wait(&buf->consumer_cond, &buf->consumer_mutex);
         printf("Consumed data with length: %d\n", buf->length);
+         fflush(stdout);
         for (int i = 0; i < buf->length; i++) {
             printf("Data #%d: %d\n", i + 1, buf->values[i]);
+            fflush(stdout);
             buf->values[i] = 0;
         }
         buf->length = 0;
@@ -34,9 +36,11 @@ void consumer(buffer_t *buf) {
 void send(buffer_t *buf, int *values, int length) {
     if (buf->length != 0) pthread_cond_wait(&buf->producer_cond, &buf->producer_mutex);
     printf("Sending data with length: %d\n", length);
+    fflush(stdout);
     for (int i = 0; i < length; i++) {
         buf->values[i] = values[i];
         printf("Sending: %d\n", buf->values[i]);
+        fflush(stdout);
     }
     buf->length = length;
     pthread_cond_signal(&buf->consumer_cond);
@@ -71,17 +75,21 @@ buffer_t* create_buffer(int capacity) {
 int main() {
     srand(0);
     buffer_t *buf = create_buffer(MAX_CAPACITY);
-    pthread_t producer_thread;
-    pthread_create(&producer_thread, NULL, producer, buf);
+  
     pthread_t consumer_threads[CONSUMERS];
     for (int i = 0; i < CONSUMERS; i++) {
         pthread_create(consumer_threads + i, NULL, consumer, buf);
     }
 
+    pthread_t producer_thread;
+    pthread_create(&producer_thread, NULL, producer, buf); // race condition if producer is created before the consumers
+    // don't know how to initialize conditional variable unlocked
+
     pthread_join(producer, NULL);
     for (int i = 0; i < CONSUMERS; i++) {
         pthread_join(consumer_threads[i], NULL);
     }
+    
     pthread_cond_destroy(&buf->consumer_cond);
     pthread_mutex_destroy(&buf->consumer_mutex);
     pthread_cond_destroy(&buf->producer_cond);

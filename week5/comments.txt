@@ -1,0 +1,17 @@
+exercise 3 with race:
+for some unknown reason
+everything is crushing after some amount of time
+
+if you have tried calling from terminal, stdout is not flushed
+try using gdb
+
+i was initialy trying to use sleep with producers and consumers
+but output didn't get to the point of exchanging data
+
+after removing sleeps, there was exchanging of data in the stdout
+
+after playing with sleeps, amount of exchanging data was varying
+
+if you completly remove the sleeps amount of data was maximum
+if you leave some sleeps in the code amount of data become less
+if you leave all sleeps nothing is printed
