@@ -80,7 +80,7 @@ int count_waiting(times_t *times, int length, int time) {
     int n = 0;
     for (int i = 0; i < length; i++) {
         if (times[i].completed) continue;
-        if (times[i].arrival >= time) break;
+        if (times[i].arrival > time) break;
         n++;
     }
     return n;
@@ -91,7 +91,7 @@ times_t **find_waiting(int waiting_length, times_t *times, int length, int time)
     int n = 0;
     for (int i = 0; i < length; i++) {
         if (times[i].completed) continue;
-        if (times[i].arrival >= time) break;
+        if (times[i].arrival > time) break;
         waiting[n] = times + i;
         n++;
     }
@@ -117,7 +117,7 @@ int main() {
             time = selected->arrival;
         } else {
             qsort(waiting, waiting_length, sizeof(times_t*), compare_burst);
-            selected = *waiting;
+			selected = *waiting;
             free(waiting);
         }
         rows[i].arrival = selected->arrival;
