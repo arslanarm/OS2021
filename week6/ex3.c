@@ -85,7 +85,7 @@ row_t *create_rows(int length) {
 
 
 int main(int argc, char **argv) {
-    if (argc == 0) {
+    if (argc == 1) {
         printf("Please enter the quantum as a first parameter\n");
         exit(1);
     }
