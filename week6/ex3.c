@@ -63,39 +63,12 @@ void print_rows(row_t *rows, int n) {
 int compare_arrival(times_t *first, times_t *second) {
 	return first->arrival - second->arrival;
 }
-
-times_t *nearest(times_t *times, int n, int time) {
-    if (n == 0) return NULL;
-    for (int i = 0; i < n; i++) {
-        if (times[i].completed == 0 && times[i].arrival > time) return times + i;
-    }
-    return NULL;
-}
-
 int compare_burst(times_t **first, times_t **second) {
 	return (*first)->burst - (*second)->burst;
 }
 
-int count_waiting(times_t *times, int length, int time) {
-    int n = 0;
-    for (int i = 0; i < length; i++) {
-        if (times[i].completed) continue;
-        if (times[i].arrival >= time) break;
-        n++;
-    }
-    return n;
-}
-
-times_t **find_waiting(int waiting_length, times_t *times, int length, int time) {
-    times_t **waiting = malloc(waiting_length * sizeof(times_t*));
-    int n = 0;
-    for (int i = 0; i < length; i++) {
-        if (times[i].completed) continue;
-        if (times[i].arrival >= time) break;
-        waiting[n] = times + i;
-        n++;
-    }
-    return waiting;
+int compare_completion(row_t *first, row_t *second) {
+    return first->completion - second->completion;
 }
 
 row_t *create_rows(int length) {
@@ -111,26 +84,53 @@ row_t *create_rows(int length) {
 }
 
 
-int main() {
+int main(int argc, char **argv) {
+    if (argc == 0) {
+        printf("Please enter the quantum as a first parameter\n");
+        exit(1);
+    }
+    int quantum = atoi(argv[1]);
+    if (quantum < 0) {
+        printf("Invalid quantum\n");
+        exit(1);
+    }
 	table_t *table = parse_csv("./f.csv");
-	
 	qsort(table->times, table->length, sizeof(times_t), compare_arrival);
 	
 	row_t *rows = create_rows(table->length);
-
+    int *quantums = malloc(table->length * sizeof(int));
+    int running = 0;
 	int time = 0;
-    int completed = 1;
+    int completed = 0;
     while (!completed) {
+        completed = 1;
         for (int i = 0; i < table->length; i++) {
             if (table->times[i].completed) continue;
-            if (time < table->times[i].arrival) {
+            completed = 0;
+            if (running == 0 && time < table->times[i].arrival) {
                 time = table->times[i].arrival;
+                running = 1;
             }
-            rows[i].arrival = table->times[i].arrival;
-            rows[i].burst = table->times[i].burst;
+            if (time < table->times[i].arrival) continue;
+            running = 1;
+
+            if (quantums[i] + quantum >= table->times[i].burst) {
+                table->times[i].completed = 1;
+                rows[i].arrival = table->times[i].arrival;
+                rows[i].burst = table->times[i].burst;
+                rows[i].completion = time + (table->times[i].burst - quantums[i]);
+                rows[i].waiting = rows[i].completion - (rows[i].arrival + rows[i].burst);
+                rows[i].turnaround = rows[i].burst + rows[i].waiting;
+                time = rows[i].completion;
+                running = 0;
+                continue;
+            }
+            quantums[i] += quantum;
+            time += quantum;
         }
     }
-
+    free(quantums);
+    qsort(rows, table->length, sizeof(row_t), compare_completion);
 	print_rows(rows, table->length);
 	free(rows);
 	free_table(table);

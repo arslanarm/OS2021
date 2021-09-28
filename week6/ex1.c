@@ -70,7 +70,8 @@ int main() {
 	row_t *rows = malloc(table->length * sizeof(row_t));
 	int time = 0;
 	for (int i = 0; i < table->length; i++) {
-		if (time == 0) time = table->times[i].arrival;
+		if (time == 0 || time < table->times[i].arrival) time = table->times[i].arrival;
+		
 		int waiting = time - table->times[i].arrival;
 		rows[i].arrival = table->times[i].arrival;
 		rows[i].burst = table->times[i].burst;
