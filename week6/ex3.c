@@ -4,6 +4,7 @@
 typedef struct times {
 	int burst;
 	int arrival;
+    int completed;
 } times_t;
 
 typedef struct table {
@@ -25,6 +26,7 @@ table_t *parse_csv(const char *filename) {
 	times_t *timetable = malloc(count * sizeof(times_t));
 	for (int i = 0; i < count; i++) {
 		fscanf(file, "%d,%d", &timetable[i].arrival, &timetable[i].burst);
+        timetable[i].completed = 0;
 	}
 	fclose(file);
 	table_t *table = malloc(sizeof(table_t));
@@ -62,23 +64,72 @@ int compare_arrival(times_t *first, times_t *second) {
 	return first->arrival - second->arrival;
 }
 
+times_t *nearest(times_t *times, int n, int time) {
+    if (n == 0) return NULL;
+    for (int i = 0; i < n; i++) {
+        if (times[i].completed == 0 && times[i].arrival > time) return times + i;
+    }
+    return NULL;
+}
+
+int compare_burst(times_t **first, times_t **second) {
+	return (*first)->burst - (*second)->burst;
+}
+
+int count_waiting(times_t *times, int length, int time) {
+    int n = 0;
+    for (int i = 0; i < length; i++) {
+        if (times[i].completed) continue;
+        if (times[i].arrival >= time) break;
+        n++;
+    }
+    return n;
+}
+
+times_t **find_waiting(int waiting_length, times_t *times, int length, int time) {
+    times_t **waiting = malloc(waiting_length * sizeof(times_t*));
+    int n = 0;
+    for (int i = 0; i < length; i++) {
+        if (times[i].completed) continue;
+        if (times[i].arrival >= time) break;
+        waiting[n] = times + i;
+        n++;
+    }
+    return waiting;
+}
+
+row_t *create_rows(int length) {
+    row_t *rows = malloc(length * sizeof(row_t));
+    for (int i = 0; i < length; i++) {
+        rows[i].arrival = 0;
+        rows[i].burst = 0;
+        rows[i].completion = 0;
+        rows[i].turnaround = 0;
+        rows[i].waiting = 0;
+    }
+    return rows;
+}
+
+
 int main() {
 	table_t *table = parse_csv("./f.csv");
 	
 	qsort(table->times, table->length, sizeof(times_t), compare_arrival);
 	
-	row_t *rows = malloc(table->length * sizeof(row_t));
+	row_t *rows = create_rows(table->length);
+
 	int time = 0;
-	for (int i = 0; i < table->length; i++) {
-		if (time == 0) time = table->times[i].arrival;
-		int waiting = time - table->times[i].arrival;
-		rows[i].arrival = table->times[i].arrival;
-		rows[i].burst = table->times[i].burst;
-		rows[i].completion = table->times[i].arrival + waiting + table->times[i].burst;
-		rows[i].turnaround = waiting + table->times[i].burst;
-		rows[i].waiting = waiting;
-		time = rows[i].completion;
-	}
+    int completed = 1;
+    while (!completed) {
+        for (int i = 0; i < table->length; i++) {
+            if (table->times[i].completed) continue;
+            if (time < table->times[i].arrival) {
+                time = table->times[i].arrival;
+            }
+            rows[i].arrival = table->times[i].arrival;
+            rows[i].burst = table->times[i].burst;
+        }
+    }
 
 	print_rows(rows, table->length);
 	free(rows);
