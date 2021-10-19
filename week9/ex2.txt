@@ -1,0 +1,4 @@
+Hit/Miss ratio gets bigger if there is small amount of programms that are using the swap memory, and programms are always referr to the small number of pages. 
+Meaning that pages will be usually in the main memory.
+Ratio gets smaller either if there is a relativly large amount of programms are running so they are accessing the different pages and the page table can't feet most of them.
+Second way of getting the ratio smaller when programms are using a lot of pages and when they used one they won't try to use it again
