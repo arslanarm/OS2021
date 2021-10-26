@@ -1,0 +1,6 @@
+-rw-rw-r-- 1 plony plony 2 окт 26 23:31 _ex3.txt
+-rw-rw-r-- 1 plony plony 2 окт 26 23:31 _ex3.txt
+-rwx---rwx 1 plony plony 2 окт 26 23:31 _ex3.txt
+660 is grant rw to user and group, others don't have anything
+775 is grant rwx to user and group, rw to others
+777 is grant rwx to everyone
