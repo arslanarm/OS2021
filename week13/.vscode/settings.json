@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.tcc": "c",
+        "string": "c",
+        "istream": "c",
+        "streambuf": "c",
+        "source_location": "c",
+        "string_view": "c"
+    }
+}

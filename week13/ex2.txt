@@ -1,0 +1,7 @@
+Recovery: Recovery from deadlock means, whenever system get's deadlocked,
+    OS should go back to the safe state and make a decision that will avoid the deadlock.
+    Recovery is useful when system can rollback to a safe state and killing a process is not the solution.
+Prevention: When deadlock occurs, OS should kill some processes to return into the safe state.
+    Prevention of the deadlocks is useful when system should not stop by any means and restarting the process is not a big deal.
+Avoidence: System should monitor the resources that are occupied by processes and run only in the safe state
+    Avoidence is particularly good when you either don't know or you know that running processes must not be killed.
