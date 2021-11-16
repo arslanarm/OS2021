@@ -86,10 +86,9 @@ int main() {
     readLine(file);
     MatrixT allocated = readMatrix(file);
     MatrixT requests = readMatrix(file);
-    int arrAvailable = 0;
-    while (!arrAvailable) {
-        arrAvailable = 1;
+    while (1) {
         int availableExists = 0;
+        int number_empty = 0;
         for (int i = 0; i < requests.verticalSize; i++) {
             int isAvailable = 1;
             for (int j = 0; j < requests.horizontalSize; j++) {
@@ -97,6 +96,7 @@ int main() {
                     isAvailable = 0;
                 }
             }
+
             if (isAvailable) {
                 int isEmpty = 1;
                 for (int j = 0; j < requests.horizontalSize; j++) {
@@ -109,16 +109,22 @@ int main() {
                         break;
                     }
                 }
-                if (isEmpty) continue;
+                // printf("%d %d\n", isAvailable, isEmpty);
+                if (isEmpty) {
+                    number_empty++;
+                    continue;
+                }
                 availableExists = 1;
                 for (int j = 0; j < allocated.horizontalSize; j++) {
-                    available.arr[i] += allocated.arr[i].arr[j] + requests.arr[i].arr[j];
+                    available.arr[j] += allocated.arr[i].arr[j] + requests.arr[i].arr[j];
                     requests.arr[i].arr[j] = 0;
                     allocated.arr[i].arr[j] = 0;
                 }
-            } else {
-                arrAvailable = 0;
             }
+        }
+        if (number_empty == requests.verticalSize) {
+            printf("No deadlock\n");
+            break;
         }
         if (!availableExists) {
             printf("Deadlock!\n");
@@ -133,11 +139,6 @@ int main() {
                 }
             }
             printf("\n");
-            break;
-        }
-
-        if (arrAvailable) {
-            printf("No deadlock\n");
             break;
         }
     }
